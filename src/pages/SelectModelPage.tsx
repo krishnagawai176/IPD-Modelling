@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { ArrowRight, Cuboid, Search } from "lucide-react";
+import { ArrowRight, Cuboid, Ruler, Search } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { mockModels, type Model } from "../data/mockModels";
 import { useIPD } from "../context/IPDContext";
-import PageTitle from "../components/common/PageTitle";
-import ModelSearchTabs, { type ModelSearchMode } from "../components/models/ModelSearchTabs";
+import { Button } from "../components/ui/button";
+import type { ModelSearchMode } from "../components/models/ModelSearchTabs";
 
 function distance(model: Model, input: number[]) {
   return model.dimensions.reduce(
@@ -14,8 +14,7 @@ function distance(model: Model, input: number[]) {
 }
 
 function matchPercentage(model: Model, input: number[]) {
-  const averageDifference = distance(model, input) / model.dimensions.length;
-  return Math.max(0, 100 - averageDifference * 100);
+  return Math.max(0, 100 - (distance(model, input) / model.dimensions.length) * 100);
 }
 
 export default function SelectModelPage() {
@@ -48,58 +47,30 @@ export default function SelectModelPage() {
     setSelectedModel(model);
     navigate("/configure");
   };
+  const changeMode = (nextMode: ModelSearchMode) => {
+    setMode(nextMode);
+    setSearched(false);
+  };
 
   return (
-    <div className="select-page">
-      <PageTitle
-        eyebrow="STEP 01 / MODEL LIBRARY"
-        title="Select a Model"
-        subtitle="Find the master model you want to configure."
-      />
-      <ModelSearchTabs
-        value={mode}
-        onChange={(nextMode) => {
-          setMode(nextMode);
-          setSearched(false);
-        }}
-        onCreate={() => navigate("/create-model")}
-      />
-      <div className="search-layout">
-        <aside className="search-panel">
-          {mode === "model" && (
-            <label className="search-input">
-              <Search size={18} />
-              <input
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
-                placeholder="Model number or name"
-              />
-            </label>
-          )}
-          {mode === "dimensions" && (
-            <form className="dimension-form" onSubmit={findByDimensions}>
-              {["Length", "Width", "Height"].map((label, index) => (
-                <label key={label}>
-                  {label} (mm)
-                  <input
-                    value={dims[index]}
-                    onChange={(event) =>
-                      setDims(
-                        dims.map((item, itemIndex) =>
-                          itemIndex === index ? event.target.value : item,
-                        ),
-                      )
-                    }
-                  />
-                </label>
-              ))}
-              <button className="primary wide" type="submit">
-                Find models <ArrowRight size={16} />
-              </button>
-              <small>Lists the closest models, not only exact matches.</small>
-            </form>
-          )}
-        </aside>
+    <div className="select-page compact-model-page">
+      <span className="eyebrow model-library-breadcrumb">STEP 01 / MODEL LIBRARY</span>
+      <div className="model-toolbar">
+        {mode === "model" && (
+          <label className="search-input">
+            <Search size={18} />
+            <input
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder="Model number or name"
+            />
+          </label>
+        )}
+        <Button className="create-model-button" onClick={() => navigate("/create-model")}>
+          Create model <ArrowRight size={16} />
+        </Button>
+      </div>
+      <div className="model-library-layout">
         <section className="results">
           <div className="results-heading">
             <div>
@@ -134,10 +105,46 @@ export default function SelectModelPage() {
             <div className="empty-state">
               <Search size={25} />
               <b>No models match your search.</b>
-              <span>Try a partial model number or show all models.</span>
+              <span>Try a partial model number.</span>
             </div>
           )}
         </section>
+        <aside className={`dimensions-sidebar ${mode === "dimensions" ? "active" : ""}`}>
+          <button
+            className="dimensions-trigger"
+            onClick={() => changeMode(mode === "dimensions" ? "model" : "dimensions")}
+          >
+            <Ruler size={17} />
+            <span>
+              <b>Search by dimensions</b>
+              <small>Find the closest matching model</small>
+            </span>
+            <ArrowRight size={16} />
+          </button>
+          {mode === "dimensions" && (
+            <form className="dimension-form" onSubmit={findByDimensions}>
+              {["Length", "Width", "Height"].map((label, index) => (
+                <label key={label}>
+                  {label} (mm)
+                  <input
+                    value={dims[index]}
+                    onChange={(event) =>
+                      setDims(
+                        dims.map((item, itemIndex) =>
+                          itemIndex === index ? event.target.value : item,
+                        ),
+                      )
+                    }
+                  />
+                </label>
+              ))}
+              <button className="primary wide" type="submit">
+                Find models <ArrowRight size={16} />
+              </button>
+              <small>Lists the closest models, not only exact matches.</small>
+            </form>
+          )}
+        </aside>
       </div>
     </div>
   );

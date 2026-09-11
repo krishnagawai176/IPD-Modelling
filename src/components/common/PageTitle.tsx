@@ -8,7 +8,7 @@ export default function PageTitle({ eyebrow, title, subtitle }: PageTitleProps) 
   return (
     <div className="page-title">
       {eyebrow && <span className="eyebrow">{eyebrow}</span>}
-      <h1>{title}</h1>
+      <h1 style={{ fontSize: "2rem" }}>{title}</h1>
       <p>{subtitle}</p>
     </div>
   );
