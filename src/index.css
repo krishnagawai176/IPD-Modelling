@@ -61,6 +61,7 @@ body,#root{font-family:'Manrope',sans-serif}
 .create-success{background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);padding:60px 35px;text-align:center}.success-icon{display:grid;place-items:center;width:54px;height:54px;border-radius:50%;background:#dff2ed;color:#16866f;margin:0 auto 22px}.create-success h1{font:normal 34px Georgia,serif;margin:0 0 10px}.create-success p{color:var(--muted);font-size:12px;margin:0 auto 25px;max-width:420px}
 @media(max-width:560px){.create-model-form{padding:22px 20px}.dimension-fields{grid-template-columns:1fr}.create-success{padding:45px 20px}}
 .auth-page{display:grid;place-items:center;min-height:100vh;background:#edf3f2;padding:32px 20px}
+.auth-page{grid-template-columns:1fr;justify-items:center}
 .auth-panel{width:min(100%,460px);min-height:0;padding:48px 56px;box-shadow:var(--shadow);border:1px solid var(--line)}
 .auth-copy{margin:62px 0 30px}
 .password-input{display:block;position:relative;border-bottom:1px solid #b9c9c8;margin-top:0}
