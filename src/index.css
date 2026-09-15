@@ -96,3 +96,19 @@ body,#root{font-family:'Manrope',sans-serif}
 .tab-list button:hover,.tab-list .tab-trigger:hover{background:#eef5fa}
 .model-icon{background:#e3eef6}
 .bottom-bar{position:sticky;bottom:0;z-index:4;background:#edf3f2;padding:16px 0;border-top:1px solid var(--line);box-shadow:0 -8px 20px rgba(24,54,74,.04)}
+
+/* Tighten chrome and let panels fill the viewport so pages avoid scrolling on typical screens */
+main{padding:36px 5vw 48px}
+.page-title{margin-bottom:22px}
+.select-page .page-title{margin-bottom:22px}
+.selected-strip{padding:14px 20px;margin-bottom:14px}
+.configure-grid{height:max(400px,calc(100vh - 420px));min-height:0}
+.preview-panel{min-height:0;overflow:hidden}
+.viewer-compact{min-height:0}
+.delivery-viewer .viewer{height:max(360px,calc(100vh - 380px));min-height:0}
+.history-table{padding:20px}
+.history-summary div{padding:16px 24px}
+.table-top{margin-bottom:14px}
+th{padding:10px 10px}
+td{padding:12px 10px}
+@media(max-width:950px){.configure-grid{height:auto}.delivery-viewer .viewer{height:430px}}
