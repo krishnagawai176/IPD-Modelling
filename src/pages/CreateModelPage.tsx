@@ -41,56 +41,56 @@ export default function CreateModelPage() {
         subtitle="Add a master model definition for future unit configurations."
       />
       <form className="create-model-form" onSubmit={submit}>
-        <div className="form-heading">
+        <aside className="form-side">
           <span className="model-icon">
             <Cuboid size={23} />
           </span>
-          <div>
-            <h2>Model details</h2>
-            <p>Enter the basic information for this master assembly.</p>
+          <h2>Model details</h2>
+          <p>Enter the basic information for this master assembly.</p>
+          <div className="cad-note">
+            <Cuboid size={17} />
+            <span>
+              <b>CAD geometry</b>
+              <small>STEP, STL, or GLTF files can be connected after the model is created.</small>
+            </span>
           </div>
-        </div>
-        <div className="form-fields">
-          <label>
-            Model number
-            <input required placeholder="MTTH-0060-IAA-177" />
-          </label>
-          <label>
-            Model description
-            <input required placeholder="Medium Temp, Air Cooled, 6.0 HP" />
-          </label>
-          <fieldset>
-            <legend>Overall dimensions (mm)</legend>
-            <div className="dimension-fields">
-              <label>
-                Length
-                <input required type="number" min="1" placeholder="1200" />
-              </label>
-              <label>
-                Width
-                <input required type="number" min="1" placeholder="800" />
-              </label>
-              <label>
-                Height
-                <input required type="number" min="1" placeholder="650" />
-              </label>
-            </div>
-          </fieldset>
-        </div>
-        <div className="cad-note">
-          <Cuboid size={17} />
-          <span>
-            <b>CAD geometry</b>
-            <small>STEP, STL, or GLTF files can be connected after the model is created.</small>
-          </span>
-        </div>
-        <div className="form-actions">
-          <button type="button" className="secondary" onClick={() => navigate("/select-model")}>
-            Cancel
-          </button>
-          <button type="submit" className="primary">
-            Create model <ArrowRight size={17} />
-          </button>
+        </aside>
+        <div className="form-main">
+          <div className="form-fields">
+            <label>
+              Model number
+              <input required placeholder="MTTH-0060-IAA-177" />
+            </label>
+            <label>
+              Model description
+              <input required placeholder="Medium Temp, Air Cooled, 6.0 HP" />
+            </label>
+            <fieldset>
+              <legend>Overall dimensions (mm)</legend>
+              <div className="dimension-fields">
+                <label>
+                  Length
+                  <input required type="number" min="1" placeholder="1200" />
+                </label>
+                <label>
+                  Width
+                  <input required type="number" min="1" placeholder="800" />
+                </label>
+                <label>
+                  Height
+                  <input required type="number" min="1" placeholder="650" />
+                </label>
+              </div>
+            </fieldset>
+          </div>
+          <div className="form-actions">
+            <button type="button" className="secondary" onClick={() => navigate("/select-model")}>
+              Cancel
+            </button>
+            <button type="submit" className="primary">
+              Create model <ArrowRight size={17} />
+            </button>
+          </div>
         </div>
       </form>
     </div>

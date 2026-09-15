@@ -63,19 +63,21 @@ body,#root{font-family:'Manrope',sans-serif}
 .match{color:var(--teal-dark)}
 @media(max-width:950px){.search-layout{grid-template-columns:1fr;gap:24px}.search-panel{border-right:0;border-bottom:1px solid var(--line);padding:0 0 22px}.dimension-form{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:560px){.dimension-form{grid-template-columns:1fr}.dimension-form .wide,.dimension-form small{grid-column:auto}.tab-list button{padding-inline:12px}}
-.create-model-page{max-width:820px;margin:auto}
+.create-model-page{max-width:1120px;margin:auto}
 .back-link{display:inline-flex;align-items:center;gap:7px;border:0;background:transparent;color:var(--teal-dark);padding:0;margin-bottom:30px;font-size:12px;font-weight:700}
 .back-link:hover{color:var(--ink)}
-.create-model-form{background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);padding:30px 34px}
-.form-heading{display:flex;align-items:center;gap:14px;border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:25px}
-.form-heading h2{font:normal 22px Georgia,serif;margin:0 0 5px}.form-heading p{font-size:11px;color:var(--muted);margin:0}
-.form-fields{display:grid;gap:20px}.form-fields>label,.dimension-fields label{display:grid;gap:7px;color:var(--muted);font-size:11px}
+.create-model-form{background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);padding:30px 34px;display:grid;grid-template-columns:250px 1fr;gap:34px}
+.form-side{border-right:1px solid var(--line);padding-right:34px;display:flex;flex-direction:column}
+.form-side h2{font:normal 22px Georgia,serif;margin:14px 0 5px}.form-side p{font-size:11px;color:var(--muted);margin:0}
+.form-main{display:flex;flex-direction:column;min-width:0}
+.form-fields{display:grid;grid-template-columns:1fr 1fr;gap:20px 18px}.form-fields>label,.dimension-fields label{display:grid;gap:7px;color:var(--muted);font-size:11px}
 .form-fields input{width:100%;border:1px solid var(--line);border-radius:3px;padding:12px 13px;color:var(--ink);font-size:12px;outline:0;background:#fff}
 .form-fields input:focus{border-color:var(--teal);box-shadow:0 0 0 2px rgba(8,123,148,.1)}
-.form-fields fieldset{border:0;padding:0;margin:2px 0 0}.form-fields legend{color:var(--muted);font-size:11px;margin-bottom:10px}.dimension-fields{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.cad-note{display:flex;align-items:flex-start;gap:10px;background:#eef6f7;color:var(--teal-dark);padding:14px;margin-top:26px;font-size:11px}.cad-note span{display:grid;gap:4px}.cad-note small{color:var(--muted);font-size:10px}.form-actions{display:flex;justify-content:flex-end;gap:9px;border-top:1px solid var(--line);margin-top:27px;padding-top:20px}
+.form-fields fieldset{grid-column:1/-1;border:0;padding:0;margin:2px 0 0}.form-fields legend{color:var(--muted);font-size:11px;margin-bottom:10px}.dimension-fields{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.cad-note{display:flex;align-items:flex-start;gap:10px;background:#eef6f7;color:var(--teal-dark);padding:14px;margin-top:auto;font-size:11px}.cad-note span{display:grid;gap:4px}.cad-note small{color:var(--muted);font-size:10px}.form-actions{display:flex;justify-content:flex-end;gap:9px;border-top:1px solid var(--line);margin-top:22px;padding-top:20px}
 .create-success{background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);padding:60px 35px;text-align:center}.success-icon{display:grid;place-items:center;width:54px;height:54px;border-radius:50%;background:#dff2ed;color:#16866f;margin:0 auto 22px}.create-success h1{font:normal 34px Georgia,serif;margin:0 0 10px}.create-success p{color:var(--muted);font-size:12px;margin:0 auto 25px;max-width:420px}
-@media(max-width:560px){.create-model-form{padding:22px 20px}.dimension-fields{grid-template-columns:1fr}.create-success{padding:45px 20px}}
+@media(max-width:800px){.create-model-form{grid-template-columns:1fr}.form-side{border-right:0;border-bottom:1px solid var(--line);padding-right:0;padding-bottom:20px;flex-direction:row;align-items:center;gap:14px;flex-wrap:wrap}.form-side h2{margin:0}.form-side .cad-note{margin-top:14px;width:100%}.form-fields{grid-template-columns:1fr 1fr;margin-top:20px}}
+@media(max-width:560px){.create-model-form{padding:22px 20px}.form-fields{grid-template-columns:1fr}.dimension-fields{grid-template-columns:1fr}.create-success{padding:45px 20px}}
 .auth-page{display:grid;place-items:center;min-height:100vh;background:#edf3f2;padding:32px 20px}
 .auth-page{grid-template-columns:1fr;justify-items:center}
 .auth-panel{width:min(100%,460px);min-height:0;padding:48px 56px;box-shadow:var(--shadow);border:1px solid var(--line)}
